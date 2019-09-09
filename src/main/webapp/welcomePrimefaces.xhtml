@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>ADMIN</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <h:form id="form" enctype="multipart/form-data" prependId="false"><font></font>   
+            <p:growl id="growl" showDetail="true"/>  
+            <p:panel header="Datos de la persona">  
+                <h:panelGrid columns="2" cellpadding="5">
+                   
+                    <p:outputLabel for="nombre" value="Nombre: " />   
+                    <p:inputText id="nombre" value="#{personasControl.usuarios.nombre}" required="true" />  
+                    <p:outputLabel for="apellido" value="Apellido:" />   
+                    <p:inputText id="apellido" value="#{personasControl.usuarios.apellido}" required="true" />  
+                   
+                    <p:outputLabel for="cedula" value="Cedula:" />   
+                    <p:inputText id="cedula" value="#{personasControl.usuarios.edad}" required="true" />  
+                   
+                   
+                   
+                <h:panelGrid>
+                    <p:commandButton value="Votar" action="#{personasControl.agregarLista()}"/> 
+                </h:panelGrid>
+                    
+                  <h:panelGrid>  
+                 <p:dataTable id="tablapersona" value="#{personasControl.listaUsuarios}"
+                                 
+                                 rows="10"
+                                 paginator="true"
+                                 
+                                 <p:column  headerText ="Nombre" filterBy="#{personasControl.listaUsuarios.nombre}"
+                                 <p:outputLabel  value="#{personasControl.listaUsuarios.nombre}" />   
+                     </p:column>
+                                  <p:column  headerText ="Apellido" filterBy="#{personasControl.listaUsuarios.apellido}"
+                                 <p:outputLabel  value="#{personasControl.listaUsuarios.apellido}" />   
+                     </p:column>
+                                 
+                                  <p:column  headerText ="Nombre" filterBy="#{personasControl.listaUsuarios.edad}"
+                                 <p:outputLabel  value="#{personasControl.listaUsuarios.edad}" />   
+                     </p:column>
+                  </h:panelGrid>           
+            </p:panel>     
+        </h:form>
+        </h:body>
+
+    </f:view>
+</html>
+
